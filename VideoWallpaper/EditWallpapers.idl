@@ -1,0 +1,9 @@
+namespace VideoWallpaper
+{
+    [default_interface]
+    runtimeclass EditWallpapers : Microsoft.UI.Xaml.Controls.Page
+    {
+        EditWallpapers();
+        Int32 MyProperty;
+    }
+}

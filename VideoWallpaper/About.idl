@@ -1,0 +1,9 @@
+namespace VideoWallpaper
+{
+    [default_interface]
+    runtimeclass About : Microsoft.UI.Xaml.Controls.Page
+    {
+        About();
+        Int32 MyProperty;
+    }
+}
