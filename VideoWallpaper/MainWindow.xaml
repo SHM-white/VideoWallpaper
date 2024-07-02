@@ -7,20 +7,34 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    >
+    Title="VideoWallpaper">
     <Window.SystemBackdrop>
         <DesktopAcrylicBackdrop/>
     </Window.SystemBackdrop>
-    <NavigationView
-        PaneDisplayMode="LeftCompact"
-        >
-        <NavigationView.FooterMenuItems>
-            <NavigationViewItem x:Name="About" Content="关于" Icon="Help"/>
-        </NavigationView.FooterMenuItems>
-        <NavigationView.MenuItems>
-            <NavigationViewItem x:Name="Home" Content="主页" Icon="Home"/>
-            <NavigationViewItem x:Name="EditWallpaper" Content="编辑壁纸" Icon="Edit"/>
-            <NavigationViewItemSeparator/>
-        </NavigationView.MenuItems>
-    </NavigationView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border x:Name="AppTitleBar" Grid.Row="0" VerticalAlignment="Top">
+            <TextBlock x:Name="AppTitle" Text="Title" VerticalAlignment="Top" Margin="50,6,0,6" />
+        </Border>
+        <NavigationView PaneDisplayMode="LeftCompact" 
+                        x:Name="NavigationViewControl" 
+                        AlwaysShowHeader="False"
+                        BackRequested="NavigationViewControl_BackRequested"
+                        Loaded="NavigationViewControl_Loaded"
+                        ItemInvoked="NavigationViewControl_ItemInvoked"
+                        Grid.Row="1">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="HomePage" Content="主页" Icon="Home" Tag="VideoWallpaper.HomePage" />
+                <NavigationViewItem x:Name="EditWallpapers" Content="编辑壁纸" Icon="Edit" Tag="VideoWallpaper.EditWallpapers"/>
+                <NavigationViewItemSeparator/>
+            </NavigationView.MenuItems>
+            <ScrollViewer>
+                <Frame x:Name="ContentFrame" NavigationFailed="ContentFrame_NavigationFailed"/>
+            </ScrollViewer>
+        </NavigationView>
+
+    </Grid>
 </Window>
